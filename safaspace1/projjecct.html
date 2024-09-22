@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Título com Botão de Compra e Galáxia 3D</title>
+
+  <!-- Link para as fontes utilizadas no design -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Estilo 3D e efeitos visuais ultra realistas -->
+  <style>
+    /* Resetar margens e padding de todos os elementos */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Corpo principal sem imagem superior, com fundo 3D */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Canvas para galáxia 3D */
+    #galaxyCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1; /* Coloca a galáxia 3D no fundo */
+    }
+
+    /* Imagens com máximo de largura 100%, centralizadas automaticamente */
+    img {
+      max-width: 100%;
+      display: block;
+      margin: auto;
+    }
+
+    /* Grid principal da página */
+    .grid {
+      display: grid;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Título responsivo e centralizado para mobile */
+    .super-headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 6vw; /* Aumenta o título em mobile */
+      color: #ffdd57;
+      margin: 0; /* Remove espaçamento extra */
+      text-shadow: 2px 2px 8px rgba(255, 221, 87, 0.8);
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center; /* Centralizado */
+    }
+
+    /* Seção de vídeo com dimensões ajustáveis */
+    .video {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* Proporção de 16:9 para vídeos */
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7); /* Sombra ao redor do vídeo */
+    }
+
+    /* Botão de compra chamativo */
+    .buy-button {
+      display: none; /* Oculto inicialmente, será exibido com delay */
+      margin: 20px auto;
+      padding: 16px 32px;
+      background-color: #ff004c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra chamativa */
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .buy-button:hover {
+      background-color: #ff3366; /* Efeito ao passar o mouse */
+    }
+
+    /* Estilos dos comentários */
+    .comments {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px; /* Espaçamento entre os comentários */
+    }
+
+    /* Caixa de comentário com efeito de profundidade e cantos arredondados */
+    .comment {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra mais intensa para combinar com o tema escuro */
+      transition: transform 0.3s ease;
+    }
+
+    /* Ao passar o mouse, o comentário "sobe" */
+    .comment:hover {
+      transform: translateY(-10px); /* Leva o comentário ligeiramente para cima */
+    }
+
+    /* Imagem do perfil do autor do comentário */
+    .comment img {
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      margin-right: 12px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5); /* Sombra em volta da imagem */
+    }
+
+    /* Conteúdo textual do comentário */
+    .comment .content {
+      font-family: 'Helvetica', Arial, sans-serif;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .comment .content .name {
+      color: #ffdd57;
+      font-weight: bold;
+      font-size: 15px;
+      text-shadow: 1px 1px 2px rgba(255, 221, 87, 0.8); /* Leve sombra no nome */
+    }
+
+    .comment .content .text {
+      margin-top: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Canvas para o fundo de galáxia 3D -->
+  <canvas id="galaxyCanvas"></canvas>
+
+  <!-- Wrapper principal com perspectiva 3D -->
+  <div class="perspective">
+    
+    <!-- Super headline acima do vídeo -->
+    <div class="super-headline">
+      Avalie Agora e Ganhe Recompensas!
+    </div>
+
+    <!-- Seção de vídeo com o Wistia incorporado -->
+      <script src="https://fast.wistia.com/embed/medias/54arvhddjs.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_54arvhddjs seo=true videoFoam=true" style="height:100%;position:relative;width:100%;">
+            <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+              <img src="https://fast.wistia.com/embed/medias/54arvhddjs/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão de compra abaixo do vídeo -->
+    <a id="buyButton1" class="buy-button" href="https://pagamento.com">Comprar Agora</a>
+
+    <!-- Seção de comentários com perspectiva 3D -->
+    <div class="comments">
+      <!-- Comentário 1 -->
+      <div class="comment">
+        <img src="images/JbNPqo3469718.webp" alt="Perfil João">
+        <div class="content">
+          <p class="name">João Carlos</p>
+          <p class="text">Ainda bem que assisti até o fim e consegui o Acesso! Já estou realizando avaliações e fiz meu primeiro saque!!</p>
+        </div>
+      </div>
+      
+      <!-- Comentário 2 -->
+      <div class="comment">
+        <img src="images/zRsWYF4897280.jpeg" alt="Perfil Ana">
+        <div class="content">
+          <p class="name">Ana Letícia</p>
+          <p class="text">Que top! Comecei ontem e já estou com R$320 de saldo! Amanhã farei meu primeiro saque!</p>
+        </div>
+      </div>
+
+      <!-- Comentário 3 -->
+      <div class="comment">
+        <img src="images/tCaDhz3710558.webp" alt="Perfil José">
+        <div class="content">
+          <p class="name">José Henrique</p>
+          <p class="text">Nossa, estava precisando muito de algo simples assim! Obrigado, me ajudou muito!</p>
+        </div>
+      </div>
+
+      <!-- Comentário 4 -->
+      <div class="comment">
+        <img src="images/rrypCk4647736.jpeg" alt="Perfil Valdemir">
+        <div class="content">
+          <p class="name">Valdemir Cristo</p>
+          <p class="text">Achei que fosse difícil, mas decidi tentar! Melhor coisa que eu fiz nos últimos meses!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão de compra abaixo dos comentários -->
+    <a id="buyButton2" class="buy-button" href="https://pagamento.com">Comprar Agora</a>
+  </div>
+
+  <!-- Script para animação da galáxia 3D usando three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Configuração básica da cena, câmera e renderizador
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxyCanvas') });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Adicionando estrelas
+    const starGeometry = new THREE.BufferGeometry();
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+    const starVertices = [];
+
+    for (let i = 0; i < 10000; i++) {
+      const x = (Math.random() - 0.5) * 2000;
+      const y = (Math.random() - 0.5) * 2000;
+      const z = -Math.random() * 2000;
+      starVertices.push(x, y, z);
+    }
+
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    // Posicionando a câmera
+    camera.position.z = 1;
+
+    // Animação para movimentar as estrelas
+    function animate() {
+      requestAnimationFrame(animate);
+
+      stars.rotation.x += 0.0005;
+      stars.rotation.y += 0.0005;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Responsividade da galáxia
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+
+    // Script de delay para exibir os botões de compra
+    function showBuyButtons(delay = 5000) { // Default delay de 5 segundos
+      setTimeout(() => {
+        document.getElementById('buyButton1').style.display = 'block';
+      }, delay);
+
+      setTimeout(() => {
+        document.getElementById('buyButton2').style.display = 'block';
+      }, delay + 2000); // O segundo botão aparece 2 segundos depois
+    }
+
+    // Chama a função de delay no carregamento da página
+    showBuyButtons(5000); // Exibe os botões após 5 segundos
+  </script>
+
+</body>
+</html>
