@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" dir="ltr">
 <head>
- <script>
-  window.pixelId = "66f0c166f6898906b6f895a8";
-  var a = document.createElement("script");
-  a.setAttribute("async", "");
-  a.setAttribute("defer", "");
-  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-  document.head.appendChild(a);
-</script>
-  <!-- Script do UTMify -->
- <script
-  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-  data-utmify-prevent-subids
-  async
-  defer
-></script>
-  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Safe Space</title>
@@ -24,6 +8,15 @@
   <!-- Link para as fontes utilizadas no design -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Script do UTMify -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+
+  <!-- Estilos gerais -->
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -61,7 +54,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: 6vw;
       color: #ffdd57;
-      margin: 20px 0; /* Espaço acima e abaixo da headline */
+      margin: 20px 0;
       text-shadow: 2px 2px 8px rgba(255, 221, 87, 0.8);
       text-transform: uppercase;
       font-weight: bold;
@@ -70,8 +63,8 @@
 
     .video {
       position: relative;
-      width: 90%; /* Espaço lateral */
-      margin: 0 auto; /* Centralizar */
+      width: 90%;
+      margin: 0 auto;
       padding-top: 56.25%;
       overflow: hidden;
       border-radius: 10px;
@@ -94,7 +87,7 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       transition: background-color 0.3s ease;
       text-decoration: none;
-      width: 90%; /* Espaço lateral para centralizar */
+      width: 90%;
     }
 
     .buy-button:hover {
@@ -212,6 +205,7 @@
     <div class="super-headline">Avalie Agora e Ganhe Recompensas!</div>
 
     <!-- Seção de vídeo com o Wistia incorporado -->
+    <div class="video">
       <script src="https://fast.wistia.com/embed/medias/54arvhddjs.jsonp" async></script>
       <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
       <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
@@ -278,6 +272,19 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Script para disparar o pixel após o carregamento da página -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      window.pixelId = "66f0c166f6898906b6f895a8";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    });
+  </script>
+
   <script>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -329,6 +336,5 @@
 
     showBuyButtons(5000);
   </script>
-
 </body>
 </html>
