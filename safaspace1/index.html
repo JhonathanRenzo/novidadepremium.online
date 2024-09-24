@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <!-- Script do UTMify -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+
+  <script>
+  window.pixelId = "66f0c166f6898906b6f895a8";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+  </script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Safe Space</title>
+
+  <!-- Link para as fontes utilizadas no design -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #000;
+      color: white;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #galaxyCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .super-headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: 6vw;
+      color: #ffdd57;
+      margin: 20px 0; /* Espaço acima e abaixo da headline */
+      text-shadow: 2px 2px 8px rgba(255, 221, 87, 0.8);
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .video {
+      position: relative;
+      width: 90%; /* Espaço lateral */
+      margin: 0 auto; /* Centralizar */
+      padding-top: 56.25%;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    .buy-button {
+      display: none;
+      margin: 20px auto;
+      padding: 16px 32px;
+      background-color: #ff004c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      width: 90%; /* Espaço lateral para centralizar */
+    }
+
+    .buy-button:hover {
+      background-color: #ff3366;
+    }
+
+    .guarantee-section {
+      margin-top: 24px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .guarantee-section p {
+      margin-bottom: 10px;
+    }
+
+    .guarantee-section b {
+      color: #ffdd57;
+    }
+
+    .graphic {
+      width: 50px;
+      height: 50px;
+      margin: 10px auto;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffdd57, #ff9a00);
+    }
+
+    .graphic:before {
+      content: '★';
+      display: block;
+      font-size: 2rem;
+      text-align: center;
+      color: #fff;
+      line-height: 50px;
+    }
+
+    .email-section {
+      margin-top: 10px;
+      padding: 15px;
+      background-color: #1a1a1a;
+      color: #ffdd57;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .email-section .icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .comments {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .comment {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .comment:hover {
+      transform: translateY(-10px);
+    }
+
+    .comment img {
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      margin-right: 12px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .comment .content {
+      font-family: 'Helvetica', Arial, sans-serif;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .comment .content .name {
+      color: #ffdd57;
+      font-weight: bold;
+      font-size: 15px;
+      text-shadow: 1px 1px 2px rgba(255, 221, 87, 0.8);
+    }
+
+    .comment .content .text {
+      margin-top: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Canvas para o fundo de galáxia 3D -->
+  <canvas id="galaxyCanvas"></canvas>
+
+  <div class="perspective">
+    <div class="super-headline">Avalie Agora e Ganhe Recompensas!</div>
+
+    <!-- Seção de vídeo com o Wistia incorporado -->
+      <script src="https://fast.wistia.com/embed/medias/54arvhddjs.jsonp" async></script>
+      <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+      <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+          <div class="wistia_embed wistia_async_54arvhddjs seo=true videoFoam=true" style="height:100%;position:relative;width:100%;">
+            <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+              <img src="https://fast.wistia.com/embed/medias/54arvhddjs/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a id="buyButton1" class="buy-button" href="https://pay.pagamentoseguropay.com/checkout/263269b4-9de9-4901-a4e7-30c8e398664b">Quero o Acesso!</a>
+
+    <!-- Garantia e Informações Adicionais -->
+    <div class="guarantee-section">
+      <div class="graphic"></div>
+      <p><b>Garantia de Reembolso</b>: Você tem 7 dias para testar o aplicativo, e se não estiver satisfeito, pode solicitar o reembolso completo, sem complicações.</p>
+    </div>
+
+    <!-- Seção de recebimento por e-mail -->
+    <div class="email-section">
+      <div class="icon">📧</div>
+      <p>Após a compra, você receberá o acesso ao aplicativo diretamente no seu e-mail. Basta seguir as instruções para começar a avaliar anúncios e ganhar recompensas!</p>
+    </div>
+
+    <!-- Seção de comentários -->
+    <div class="comments">
+      <div class="comment">
+        <img src="images/JbNPqo3469718.webp" alt="Perfil João">
+        <div class="content">
+          <p class="name">João Carlos</p>
+          <p class="text">Ainda bem que assisti até o fim e consegui o Acesso! Já estou realizando avaliações e fiz meu primeiro saque!!</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img src="images/zRsWYF4897280.jpeg" alt="Perfil Ana">
+        <div class="content">
+          <p class="name">Ana Letícia</p>
+          <p class="text">Que top! Comecei ontem e já estou com R$320 de saldo! Amanhã farei meu primeiro saque!</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img src="images/tCaDhz3710558.webp" alt="Perfil José">
+        <div class="content">
+          <p class="name">José Henrique</p>
+          <p class="text">Nossa, estava precisando muito de algo simples assim! Obrigado, me ajudou muito!</p>
+        </div>
+      </div>
+
+      <div class="comment">
+        <img src="images/rrypCk4647736.jpeg" alt="Perfil Valdemir">
+        <div class="content">
+          <p class="name">Valdemir Cristo</p>
+          <p class="text">Achei que fosse difícil, mas decidi tentar! Melhor coisa que eu fiz nos últimos meses!</p>
+        </div>
+      </div>
+    </div>
+
+    <a id="buyButton2" class="buy-button" href="https://pay.pagamentoseguropay.com/checkout/263269b4-9de9-4901-a4e7-30c8e398664b">Quero o Acesso!</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('galaxyCanvas') });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const starGeometry = new THREE.BufferGeometry();
+    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+    const starVertices = [];
+
+    for (let i = 0; i < 10000; i++) {
+      const x = (Math.random() - 0.5) * 2000;
+      const y = (Math.random() - 0.5) * 2000;
+      const z = -Math.random() * 2000;
+      starVertices.push(x, y, z);
+    }
+
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    camera.position.z = 1;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      stars.rotation.x += 0.0005;
+      stars.rotation.y += 0.0005;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+
+    function showBuyButtons(delay = 5000) {
+      setTimeout(() => {
+        document.getElementById('buyButton1').style.display = 'block';
+      }, delay);
+
+      setTimeout(() => {
+        document.getElementById('buyButton2').style.display = 'block';
+      }, delay + 2000);
+    }
+
+    showBuyButtons(5000);
+  </script>
+
+</body>
+</html>
